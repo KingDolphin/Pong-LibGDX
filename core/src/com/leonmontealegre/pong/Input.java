@@ -23,16 +23,20 @@ public class Input implements InputProcessor {
 
     @Override
     public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-        if (pointer < touchPositions.size())
-            touchPositions.remove(pointer);
-        else
-            touchPositions.remove(touchPositions.size()-1);
+        if (touchPositions.size() > 0) {
+            if (pointer < touchPositions.size())
+                touchPositions.remove(pointer);
+            else
+                touchPositions.remove(touchPositions.size() - 1);
+        }
         return false;
     }
 
     @Override
     public boolean touchDragged(int screenX, int screenY, int pointer) {
-        touchPositions.set(pointer % touchPositions.size(), new Vector2(screenX, Gdx.graphics.getHeight()-screenY));
+        if (touchPositions.size() > 0) {
+            touchPositions.set(pointer % touchPositions.size(), new Vector2(screenX, Gdx.graphics.getHeight() - screenY));
+        }
         return false;
     }
 

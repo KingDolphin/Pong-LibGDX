@@ -2,15 +2,11 @@
 <resources>
 
     <string name="app_name">Pong</string>
-    
+
     <string name="start_game_text">Start</string>
     <string name="quit_game_text">Exit</string>
 
-    <string name="default_score">0</string>
-
-    <string name="start_text">Tap to start</string>
-    <string name="tap_image_desc">The image to signal a tap.</string>
-
-    <string name="pause_button_desc">The button to pause the game.</string>
+    <string name="default_winner_text">Player X won.</string>
+    <string name="back_to_menu_text">Back to Menu</string>
 
 </resources>

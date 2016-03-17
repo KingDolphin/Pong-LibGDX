@@ -14,18 +14,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:id="@+id/main_menu_title"
-        android:textSize="72sp"
+        android:id="@+id/winner_text"
+        android:textSize="80sp"
         android:textColor="#FFFFFF"
-        android:text="@string/app_name" />
+        android:text="@string/default_winner_text" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_below="@+id/main_menu_title"
+        android:layout_below="@+id/winner_text"
         android:layout_marginTop="64dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="16dp"
         android:layout_marginStart="5dp"
         android:layout_marginLeft="32dp"
         android:layout_marginEnd="32dp"
@@ -38,24 +38,11 @@
             android:layout_marginEnd="32dp"
             android:layout_marginRight="32dp"
             android:padding="16dp"
-            android:id="@+id/start_game_button"
+            android:id="@+id/back_to_menu_button"
             android:background="#000000"
-            android:textSize="54sp"
+            android:textSize="30sp"
             android:textColor="#FFFFFF"
-            android:text="@string/start_game_text"/>
-
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_marginStart="32dp"
-            android:layout_marginLeft="32dp"
-            android:padding="16dp"
-            android:id="@+id/quit_game_button"
-            android:background="#000000"
-            android:textSize="54sp"
-            android:textColor="#FFFFFF"
-            android:text="@string/quit_game_text"/>
+            android:text="@string/back_to_menu_text"/>
 
     </LinearLayout>
 

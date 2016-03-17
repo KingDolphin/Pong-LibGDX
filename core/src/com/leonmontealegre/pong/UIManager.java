@@ -21,9 +21,6 @@ public class UIManager {
     private GlyphLayout player1PointsText;
     private GlyphLayout player2PointsText;
 
-    /* Texture for the pause button */
-    private Texture pauseTexture;
-
     /* Texture for the 'touch here' icon */
     private Texture touchHereTexture;
 
@@ -57,7 +54,6 @@ public class UIManager {
         player1PointsText = new GlyphLayout(font, "0");
         player2PointsText = new GlyphLayout(font, "0");
 
-        pauseTexture = new Texture("pauseIcon.png");
         touchHereTexture = new Texture("touchHereIcon.png");
     }
 
@@ -67,17 +63,6 @@ public class UIManager {
      * and/or right side of the screen.
      */
     public void update() {
-        final float pauseWidth = Gdx.graphics.getWidth() / 16;
-        final float pauseHeight = pauseWidth * pauseTexture.getHeight() / pauseTexture.getWidth();
-        final float pauseX = Gdx.graphics.getWidth() - pauseWidth - margin;
-        final float pauseY = margin;
-        for (Vector2 pos : Input.touchPositions) {
-            if (pos.x > pauseX && pos.x < pauseX+pauseWidth && pos.y > pauseY && pos.y < pauseY+pauseHeight) {
-                game.setState(Game.GameState.Paused);
-                break;
-            }
-        }
-
         if (game.getCurrentState() == Game.GameState.Start) {
             leftPressed = rightPressed = false;
             for (Vector2 pos : Input.touchPositions) {
@@ -105,11 +90,6 @@ public class UIManager {
         final float p2PointsX = Gdx.graphics.getWidth() - player2PointsText.width - margin;
         final float p2PointsY = Gdx.graphics.getHeight() - margin;
         font.draw(batch, player2PointsText, p2PointsX, p2PointsY);
-
-        final float pauseWidth = Gdx.graphics.getWidth() / 16;
-        final float pauseHeight = pauseWidth * pauseTexture.getHeight() / pauseTexture.getWidth();
-        final float pauseX = Gdx.graphics.getWidth() - pauseWidth - margin;
-        batch.draw(pauseTexture, pauseX, margin, pauseWidth, pauseHeight);
     }
 
     /**

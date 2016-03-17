@@ -9,6 +9,8 @@ import com.badlogic.gdx.math.Vector2;
 
 public class Game extends ApplicationAdapter {
 
+	public static final int WINNING_AMOUNT = 5;
+
 	public static final int TARGET_UPS = 30;
 	private static final float ns = 1000000000.0f / TARGET_UPS;
 	private long lastTime = System.nanoTime();
@@ -27,6 +29,8 @@ public class Game extends ApplicationAdapter {
 	private UIManager ui;
 
 	private int player1Points = 0, player2Points = 0;
+
+	private int winner = -1;
 
 	@Override
 	public void create() {
@@ -67,6 +71,7 @@ public class Game extends ApplicationAdapter {
 	}
 
 	private void reset() {
+		Input.touchPositions.clear();
 		currentState = GameState.Start;
 		float size = Gdx.graphics.getWidth()/40;
 		ball = new Ball(Gdx.graphics.getWidth()/2-size/2, Gdx.graphics.getHeight()/2-size/2, size);
@@ -88,13 +93,30 @@ public class Game extends ApplicationAdapter {
 				if (ball.getSide() == -1) { // if on left side
 					player2Points++;
 					ui.updatePoints(false, player2Points);
+					if (player2Points >= WINNING_AMOUNT) {
+						gameOver(2);
+						return;
+					}
 				} else {
 					player1Points++;
 					ui.updatePoints(true, player1Points);
+					if (player1Points >= WINNING_AMOUNT) {
+						gameOver(1);
+						return;
+					}
 				}
 				reset();
 			}
 		}
+	}
+
+	private void gameOver(int winner) {
+		this.winner = winner;
+		Gdx.app.exit();
+	}
+
+	public int getWinner() {
+		return winner;
 	}
 
 	@Override
@@ -133,7 +155,7 @@ public class Game extends ApplicationAdapter {
 	}
 
 	public enum GameState {
-		Start, Playing, Paused
+		Start, Playing
 	}
 
 }
