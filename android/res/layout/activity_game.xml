@@ -18,8 +18,9 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:id="@+id/player1_score_text"
-        android:text="0"
-        android:textSize="32sp" />
+        android:text="@string/default_score"
+        android:textColor="#000000"
+        android:textSize="48sp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -27,18 +28,73 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:id="@+id/player2_score_text"
-        android:text="0"
-        android:textSize="32sp" />
+        android:text="@string/default_score"
+        android:textColor="#000000"
+        android:textSize="48sp" />
 
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/in_game_layout"
+        android:layout_toRightOf="@+id/in_game_layout"
         android:id="@+id/pause_button"
         android:src="@drawable/ic_pause_black_24dp"
         android:background="#00000000"
-        android:tint="#000000" />
+        android:tint="#000000"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/pause_button_desc" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/in_game_layout"
+        android:layout_toRightOf="@+id/player1_score_text"
+        android:layout_toEndOf="@+id/player1_score_text"
+        android:layout_toLeftOf="@+id/player2_score_text"
+        android:layout_toStartOf="@+id/player2_score_text"
+        android:layout_margin="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/tap_start_start_text"
+            android:text="@string/start_text"
+            android:textColor="#000000"
+            android:textSize="32sp"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/tap_start_start_text"
+            android:layout_toStartOf="@+id/tap_start_start_text"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="48dp"
+            android:layout_marginRight="64dp"
+            android:id="@+id/tap_left_image"
+            android:src="@drawable/ic_touch_app_black_24dp"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/tap_image_desc" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/tap_start_start_text"
+            android:layout_toEndOf="@+id/tap_start_start_text"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginLeft="64dp"
+            android:layout_marginRight="48dp"
+            android:id="@+id/tap_right_image"
+            android:src="@drawable/ic_touch_app_black_24dp"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/tap_image_desc" />
+
+    </RelativeLayout>
 
 </RelativeLayout>
